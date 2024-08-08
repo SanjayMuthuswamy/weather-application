@@ -1,0 +1,67 @@
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(135deg, rgb(179, 247, 224), rgb(73, 73, 233));
+}
+
+.card {
+    max-width: 750px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    margin: 40px auto 0;
+    padding: 40px 35px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.search {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.search input {
+    border: 0;
+    outline: 0;
+    border-radius: 30px;
+    background: #eee;
+    padding: 10px 25px;
+    height: 20px;
+    flex: 1;
+    margin-right: 16px;
+    font-size: 15px;
+}
+
+.search button {
+    border: 0;
+    width: 90px;
+    font-size: 15px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.winding {
+    width: 20%;
+}
+
+.humidity_1 {
+    width: 20%;
+}
+
+.temp {
+    margin-top: 40px;
+}
+.lat_lon{
+    display: inline-flex;
+}
+
+
+

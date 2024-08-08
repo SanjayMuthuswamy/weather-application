@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Weather App</title>
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="search">
+            <input type="text" placeholder="Enter the city name" spellcheck="false">
+            <button>Search</button>
+        </div>
+
+        <div class="weather">
+            <h1 class="temp" style="font-size: 80px; margin-top:-8px; color:rgba(7, 52, 103, 0.915);">Temp ?</h1>
+            <h2 class="city">City</h2><hr>
+
+            <div class="details">
+                <div class="col" style="padding-top: 15px; color:black;">
+                    <img src="humidity.png" alt="humidity-error" class="humidity_1">
+                    <div>
+                        <p class="humidity">---%</p>
+                        <p style="font-size: x-large;">Humidity</p>
+                    </div>
+                </div>
+
+                <div class="col" style="padding-top: 15px; color:black;">
+                    <img src="wind.png" alt="wind-error" class="winding">
+                    <div>
+                        <p class="wind">--- km/h</p>
+                        <p style="font-size: x-large;">Wind Speed</p>
+                    </div>
+                </div>
+                <div class="lat_lon" style="margin-top:10px;">
+                    <div class="lat">
+                        <div>
+                            <p>Latitude : --- & </p>
+                            
+                        </div>
+                    </div>
+                    <div class="lon">
+                        <div>
+                            <p>Longitude : ---</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const apikey = "dcb4e77991607fc9e1abf530068de774";
+        const apiurl = "https://api.openweathermap.org/data/2.5/weather?&unit=metric&q=";
+        var searchbox = document.querySelector(".search input"); 
+        var searchbtn = document.querySelector(".search button");
+
+        async function checkweather(city) {
+            const response = await fetch(apiurl + city + `&appid=${apikey}`);
+            var data = await response.json();
+            console.log(data);
+
+            document.querySelector(".city").innerHTML = data.name;
+            document.querySelector(".temp").innerHTML = `${Math.round(data.main.temp)}°C`;
+            document.querySelector(".humidity").innerHTML = `${data.main.humidity}%`;
+            document.querySelector(".wind").innerHTML = `${data.wind.speed} km/h`;
+            document.querySelector(".lat").innerHTML = `Latitude: ${data.coord.lat}° N &`;
+            document.querySelector(".lon").innerHTML = `Longitude: ${data.coord.lon}° W`;
+        }
+
+        searchbtn.addEventListener("click", () => {
+            checkweather(searchbox.value);
+        });
+
+        searchbox.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+                checkweather(searchbox.value);
+            }
+        });
+    </script>
+</body>
+
+</html>
